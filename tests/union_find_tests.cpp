@@ -70,4 +70,4 @@ TEST_CASE("Elements connection operations behave correctly")
     }
 }
 
-// connected() can't be called on negative numbers
+// TODO: connected() can't be called on negative numbers

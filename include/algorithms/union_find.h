@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+namespace Algs
+{
 class UnionFind
 {
 public:
@@ -13,3 +15,4 @@ public:
     // virtual int count() = 0;     // TODO:
     virtual std::size_t getSize() const = 0;
 };
+}

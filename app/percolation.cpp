@@ -10,10 +10,10 @@
 #include <stdlib.h>
 
 // #include "exampleConfig.h"
-#include "algorithms/quick_find.h"
+#include "algorithms/quick_find_UF.h"
 
 int main() {
-  // UnionFind *union_find = new QuickFind();
+  // UnionFind *union_find = new QuickFindUF();
 
   // union_find->join(1, 2);
 

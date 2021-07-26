@@ -4,13 +4,14 @@
 #include <vector>
 #include <type_traits>
 
-
-class QuickFind : public UnionFind
+namespace Algs
+{
+class QuickFindUF : public UnionFind
 {
 public:
-    QuickFind(int size);
+    QuickFindUF(int size);
 
-    ~QuickFind();
+    ~QuickFindUF();
 
     void initializeWithIncreasingIds();
 
@@ -47,3 +48,4 @@ private:
 
     void performIndicesSubstitution(int p_id, int q_id);
 };
+}

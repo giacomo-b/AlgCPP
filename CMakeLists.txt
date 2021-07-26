@@ -38,12 +38,12 @@ find_lto(CXX)
 #                         Locate files (change as needed).
 # --------------------------------------------------------------------------------
 set(SOURCES          # All .cpp files in src/
-    src/example.cpp
+    src/quick_find.cpp
 )
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp
 )
-set(LIBRARY_NAME engine)  # Default name for the library built from src/*.cpp (change if you wish)
+set(LIBRARY_NAME algorithms)  # Default name for the library built from src/*.cpp (change if you wish)
 
 # --------------------------------------------------------------------------------
 #                            Build! (Change as needed)
@@ -61,16 +61,17 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
 target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying)
 # target_compile_options(${LIBRARY_NAME} ... )  # For setting manually.
 
-# Add an executable for the file app/main.cpp.
+# Add an executable for the file app/percolation.cpp.
 # If you add more executables, copy these lines accordingly.
-add_executable(main app/main.cpp)   # Name of exec. and location of file.
-target_link_libraries(main PRIVATE ${LIBRARY_NAME})  # Link the executable to library (if it uses it).
-target_set_warnings(main ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
-target_enable_lto(main optimized)  # enable link-time-optimization if available for non-debug configurations
+set(PERCOLATION_EXEC_NAME percolation)
+add_executable(${PERCOLATION_EXEC_NAME} app/percolation.cpp)   # Name of exec. and location of file.
+target_link_libraries(${PERCOLATION_EXEC_NAME} PRIVATE ${LIBRARY_NAME})  # Link the executable to library (if it uses it).
+target_set_warnings(${PERCOLATION_EXEC_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
+target_enable_lto(${PERCOLATION_EXEC_NAME} optimized)  # enable link-time-optimization if available for non-debug configurations
 
 # Set the properties you require, e.g. what C++ standard to use. Here applied to library and main (change as needed).
 set_target_properties(
-    ${LIBRARY_NAME} main 
+    ${LIBRARY_NAME} ${PERCOLATION_EXEC_NAME} 
       PROPERTIES 
         CXX_STANDARD 17 
         CXX_STANDARD_REQUIRED YES 

@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.12)
 # List all files containing tests. (Change as needed)
 set(TESTFILES        # All .cpp files in tests/
     main.cpp
-    dummy.cpp
+    union_find_integration_tests.cpp
+    union_find_tests.cpp
 )
 
 set(TEST_MAIN unit_tests)   # Default name for test executable (change if you wish).

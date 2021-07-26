@@ -69,3 +69,5 @@ TEST_CASE("Elements connection operations behave correctly")
         CHECK_THROWS_AS(quick_find.join(7, 1), std::exception);
     }
 }
+
+// connected() can't be called on negative numbers

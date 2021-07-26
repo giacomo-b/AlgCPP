@@ -3,10 +3,9 @@
 #include <numeric>
 
 QuickFind::QuickFind(int size)
-    : id(size)
+    : id(size), size(id.size())
 {
-    this->size = id.size();
-    std::iota(std::begin(id), std::end(id), 0);
+    initializeWithIncreasingIds();
 }
 
 QuickFind::~QuickFind()
@@ -14,23 +13,34 @@ QuickFind::~QuickFind()
 
 }
 
+void QuickFind::initializeWithIncreasingIds()
+{
+    std::iota(std::begin(id), std::end(id), 0);
+}
+
 void QuickFind::join(int p, int q) {
-    if (outOfRange(p, q))
-        throw std::out_of_range("Elements indices out of range");
+    assertValidArguments(p, q);
     
     if (connected(p, q))
         return;
-    
-    const int p_id = id[p],
-              q_id = id[q];
-    
-    // TODO: check that they are not already connected
-    for (size_t i = 0; i < id.size(); ++i)
-        if (id[i] == p_id)
-            id[i] = q_id;
+
+    performIndicesSubstitution(id[p], id[q]);
+}
+
+void QuickFind::assertValidArguments(int p, int q) const
+{
+    if (outOfRange(p, q))
+            throw std::out_of_range("Elements indices out of range");
 }
 
 bool QuickFind::outOfRange(int p, int q) const
 {
     return (atLeastOneNegative(p, q) || atLeastOneExceedsIdSize(p, q));
+}
+
+void QuickFind::performIndicesSubstitution(int p_id, int q_id)
+{
+    for (size_t i = 0; i < size; ++i)
+        if (id[i] == p_id)
+            id[i] = q_id;
 }

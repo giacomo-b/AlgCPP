@@ -1,28 +1,15 @@
 #include "doctest.h"
 #include "algs/quick_find_UF.h"
 
-TEST_CASE("Constructor rejects negative problem sizes")
-{
-    CHECK_THROWS_AS(Algs::QuickFindUF(-2), std::exception);
-}
-
-TEST_CASE("Constructor initializes empty vector")
-{
-    const int vector_size = 0;
-    Algs::QuickFindUF quick_find(vector_size);
-    REQUIRE(quick_find.getSize() == (std::size_t)vector_size);
-}
-
-TEST_CASE("Constructor initializes vector of positive size")
-{
-    const int vector_size = 3;
-    Algs::QuickFindUF quick_find(vector_size);
-    REQUIRE(quick_find.getSize() == (std::size_t)vector_size);
-}
-
 TEST_CASE("Elements connection operations behave correctly")
 {
-    Algs::QuickFindUF quick_find(5);
+    const int size = 5;
+    Algs::QuickFindUF quick_find(size);
+
+    SUBCASE("QuickFindUF initializes ids of the correct size")
+    {
+        REQUIRE(quick_find.size() == (std::size_t)size);
+    }
 
     SUBCASE("An element is connected to itself (reflexive property)")
     {

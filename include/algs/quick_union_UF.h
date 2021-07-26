@@ -15,7 +15,7 @@ public:
 
     void join(int p, int q) { std::cout << p+q; };
     bool connected(int p, int q) const { return (p && q); };
-    std::size_t getSize() const { return 2; };
+    std::size_t size() const { return 2; };
 
 private:
 

@@ -5,6 +5,7 @@ set(TESTFILES        # All .cpp files in tests/
     main.cpp
     union_find_integration_tests.cpp
     union_find_tests.cpp
+    id_container_tests.cpp
 )
 
 set(TEST_MAIN unit_tests)   # Default name for test executable (change if you wish).

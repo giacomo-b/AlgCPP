@@ -2,7 +2,7 @@
 
 #include "union_find.h"
 #include <vector>
-#include <type_traits>
+#include <stdexcept>
 
 namespace Algs
 {
@@ -13,7 +13,7 @@ public:
 
     ~QuickFindUF();
 
-    void initializeWithIncreasingIds();
+    void fillWithIncreasingIds();
 
     void join(int p, int q);
 
@@ -35,16 +35,9 @@ private:
 
     bool outOfRange(int p, int q) const;
 
-    inline bool atLeastOneNegative(int p, int q) const
-    {
-        return (p < 0 || q < 0);
-    }
+    inline bool negative(int i) const { return (i < 0); }
 
-    inline bool atLeastOneExceedsIdSize(int p, int q) const
-    {
-        return ( ((std::size_t)p >= size) ||
-                 ((std::size_t)q >= size) );
-    }
+    inline bool exceedsSize(int i) const { return ((std::size_t)i >= size); }
 
     void performIndicesSubstitution(int p_id, int q_id);
 };

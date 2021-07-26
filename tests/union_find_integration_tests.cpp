@@ -1,6 +1,6 @@
 #include "doctest.h"
-#include "algorithms/union_find.h"
-#include "algorithms/quick_find_UF.h"
+#include "algs/union_find.h"
+#include "algs/quick_find_UF.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

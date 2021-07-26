@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "algorithms/quick_find_UF.h"
+#include "algs/quick_find_UF.h"
 
 TEST_CASE("Constructor rejects negative problem sizes")
 {

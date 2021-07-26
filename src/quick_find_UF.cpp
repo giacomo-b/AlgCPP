@@ -1,13 +1,13 @@
-#include "algorithms/quick_find_UF.h"
-#include <iostream>
+#include "algs/quick_find_UF.h"
 #include <numeric>
 
 using namespace Algs;
 
 QuickFindUF::QuickFindUF(int size)
-    : id(size), size(id.size())
 {
-    initializeWithIncreasingIds();
+    id.resize(size);
+    this->size = id.size();
+    fillWithIncreasingIds();
 }
 
 QuickFindUF::~QuickFindUF()
@@ -15,16 +15,14 @@ QuickFindUF::~QuickFindUF()
 
 }
 
-void QuickFindUF::initializeWithIncreasingIds()
+void QuickFindUF::fillWithIncreasingIds()
 {
     std::iota(std::begin(id), std::end(id), 0);
 }
 
 void QuickFindUF::join(int p, int q) {
     assertValidArguments(p, q);
-    
-    if (connected(p, q))
-        return;
+    if (connected(p, q)) return;
 
     performIndicesSubstitution(id[p], id[q]);
 }
@@ -32,12 +30,13 @@ void QuickFindUF::join(int p, int q) {
 void QuickFindUF::assertValidArguments(int p, int q) const
 {
     if (outOfRange(p, q))
-            throw std::out_of_range("Elements indices out of range");
+        throw std::out_of_range("Elements indices out of range");
 }
 
 bool QuickFindUF::outOfRange(int p, int q) const
 {
-    return (atLeastOneNegative(p, q) || atLeastOneExceedsIdSize(p, q));
+    return (negative(p) || exceedsSize(p) ||
+            negative(q) || exceedsSize(q) );
 }
 
 void QuickFindUF::performIndicesSubstitution(int p_id, int q_id)

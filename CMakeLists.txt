@@ -39,6 +39,7 @@ find_lto(CXX)
 # --------------------------------------------------------------------------------
 set(SOURCES          # All .cpp files in src/
     src/quick_find_UF.cpp
+    src/quick_union_UF.cpp
 )
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp
